@@ -5,7 +5,10 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "lite-server"
+    "dev:watch": "concurrently \"tsc --watch\" \"lite-server\"",
+
+    "build": "tsc && ./scripts/copy-static-files.sh",
+    "start": "lite-server --baseDir=dist"
   },
   "keywords": [
     "typescript",
@@ -13,6 +16,7 @@
   ],
   "license": "ISC",
   "devDependencies": {
+    "concurrently": "^9.1.2",
     "lite-server": "^2.5.4"
   }
 }
