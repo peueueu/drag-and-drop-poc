@@ -28,6 +28,7 @@ textarea {
 form {
   width: inherit;
   max-width: 500px;
+  border-radius: .5rem;
 }
 
 section {
@@ -61,6 +62,8 @@ button {
   cursor: pointer;
   color: white;
   padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  border-radius: .5rem;
 }
 
 button:focus {
@@ -76,6 +79,7 @@ button:active {
 .projects {
   margin: 1rem;
   border: 1px solid #ff0062;
+  border-radius: 1rem 1rem;
 }
 
 .projects header {
@@ -87,19 +91,23 @@ button:active {
 }
 
 #active-projects {
+  transition: .3s ease-in-out;
   border-color: #ff0062;
 }
 
 #active-projects header {
   background: #ff0062;
+    border-radius: 1rem 1rem 0 0;
 }
 
 #finished-projects {
+  transition: .3s ease-in-out;
   border-color: #0044ff;
 }
 
 #finished-projects header {
   background: #0044ff;
+    border-radius: 1rem 1rem 0 0;
 }
 
 .projects h2 {
@@ -118,6 +126,7 @@ button:active {
   padding: 1rem;
   margin: 1rem;
   background-color: #fefefe;
+  border-radius: 1rem;
 }
 
 .projects li h2 {
@@ -140,6 +149,7 @@ button:active {
 
 .droppable {
   background: #ffe3ee;
+  border-radius: 0 0 1rem 1rem;
 }
 
 #finished-projects .droppable {
