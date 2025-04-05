@@ -5,13 +5,12 @@ import { Validatable } from "@/interfaces/validatable.interface";
 import { Autobind } from "@/decorators/autobind.decorator";
 import { INSERT_ELEMENT_POSITION } from "@/src/enums";
 import { validateFormFields } from "@/src/helpers/validate-form-fields.helper";
-import { ProjectState } from "@/classes/State/ProjectState.class";
+import { projectState } from "@/classes/State/ProjectState.class";
 
 class ProjectForm extends Component<HTMLDivElement, HTMLFormElement> {
   titleInputElement: FormInputElement["titleInputElement"];
   descriptionInputElement: FormInputElement["descriptionInputElement"];
   peopleInputElement: FormInputElement["peopleInputElement"];
-  projectState: ProjectState = ProjectState.getInstance();
 
   constructor() {
     super(
@@ -90,7 +89,7 @@ class ProjectForm extends Component<HTMLDivElement, HTMLFormElement> {
     const userInput = this.gatherUserInput();
     if (isArray(userInput)) {
       const [title, description, people] = userInput;
-      this.projectState.addProject({ title, description, people });
+      projectState.addProject({ title, description, people });
       this.clearInputs();
     }
   }

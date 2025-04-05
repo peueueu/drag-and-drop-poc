@@ -1,7 +1,7 @@
 import { INSERT_ELEMENT_POSITION, PROJECT_STATUS } from "@/src/enums";
 import { Component } from "@/classes/Component/Component.class";
 import { Project } from "@/classes/Project/Project.class";
-import { ProjectState } from "@/src/classes/entities/State/ProjectState.class";
+import { projectState } from "@/src/classes/entities/State/ProjectState.class";
 import { ProjectItem } from "./ProjectItem.class";
 import { DragTarget } from "@/src/interfaces/drag-n-drop.interface";
 import { Autobind } from "@/src/decorators/autobind.decorator";
@@ -11,7 +11,6 @@ class ProjectList
   implements DragTarget
 {
   assignedProjects: Project[] = [];
-  projectState: ProjectState = ProjectState.getInstance();
 
   constructor(private status: "active" | "finished") {
     super(
@@ -36,7 +35,7 @@ class ProjectList
   @Autobind
   dropHandler(event: DragEvent) {
     const selectedProjectId = event.dataTransfer!.getData("text/plain");
-    this.projectState.moveProject(
+    projectState.moveProject(
       selectedProjectId,
       this.status === "active" ? PROJECT_STATUS.ACTIVE : PROJECT_STATUS.FINISHED
     );
@@ -52,7 +51,7 @@ class ProjectList
     this.element.addEventListener("drop", this.dropHandler);
     this.element.addEventListener("dragleave", this.dragLeaveHandler);
 
-    this.projectState.addListener((projects: Project[]) => {
+    projectState.addListener((projects: Project[]) => {
       const relevantProjects = projects.filter((prj) => {
         if (this.status === "active") {
           return prj.status === PROJECT_STATUS.ACTIVE;
