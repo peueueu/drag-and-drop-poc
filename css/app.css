@@ -86,6 +86,14 @@ button:active {
   align-items: center;
 }
 
+#active-projects {
+  border-color: #ff0062;
+}
+
+#active-projects header {
+  background: #ff0062;
+}
+
 #finished-projects {
   border-color: #0044ff;
 }
@@ -109,6 +117,7 @@ button:active {
   box-shadow: 1px 1px 8px rgba(0, 0, 0, 0.26);
   padding: 1rem;
   margin: 1rem;
+  background-color: #fefefe;
 }
 
 .projects li h2 {
