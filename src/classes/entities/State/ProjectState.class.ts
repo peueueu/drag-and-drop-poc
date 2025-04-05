@@ -28,17 +28,21 @@ class ProjectState extends State<Project> {
       PROJECT_STATUS.ACTIVE
     );
     this.projects.push(newProject);
-    for (const listenerFn of this.listeners) {
-      listenerFn(this.projects.slice());
+    this.updateListeners();
+  }
+
+  moveProject(projectId: string, newStatus: PROJECT_STATUS) {
+    const selectedProject = this.projects.find((prj) => prj.id === projectId);
+    if (selectedProject && selectedProject.status !== newStatus) {
+      selectedProject.status = newStatus;
+      this.updateListeners();
     }
   }
 
-  getProjects() {
-    return this.projects;
-  }
-
-  setProjects(projects: Project[]) {
-    this.projects = [...projects];
+  private updateListeners() {
+    for (const listenerFn of this.listeners) {
+      listenerFn(this.projects.slice());
+    }
   }
 }
 

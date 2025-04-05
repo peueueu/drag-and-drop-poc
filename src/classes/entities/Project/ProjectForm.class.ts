@@ -11,8 +11,9 @@ class ProjectForm extends Component<HTMLDivElement, HTMLFormElement> {
   titleInputElement: FormInputElement["titleInputElement"];
   descriptionInputElement: FormInputElement["descriptionInputElement"];
   peopleInputElement: FormInputElement["peopleInputElement"];
+  projectState: ProjectState = ProjectState.getInstance();
 
-  constructor(public projectState: ProjectState) {
+  constructor() {
     super(
       "project-input",
       "app",
@@ -30,11 +31,11 @@ class ProjectForm extends Component<HTMLDivElement, HTMLFormElement> {
       "#people"
     ) as HTMLInputElement;
 
-    this.attach();
     this.configure();
   }
 
   configure() {
+    this.attach();
     this.element.addEventListener("submit", this.submitHandler);
   }
 
